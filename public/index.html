@@ -123,7 +123,11 @@
                         '#ffcd56',
                         '#ff6384',
                         '#36a2eb',
-                        '#fd6b19',
+                        '#006400',
+                        '#7FFFD4',
+                        '#8A2BE2',
+                        '#DC143C',
+                        '#fd6b19'
                     ],
                 }
             ],
@@ -141,10 +145,11 @@
         function getBudget(){
             axios.get('/budget')
             .then(function (res){
+                console.log("hello world");
                 console.log(res);
-                for (var i = 0; i < res.data.myBudget.length; i++){
-                    dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
-                    dataSource.labels[i] = res.data.myBudget[i].title;
+                for (var i = 0; i < res.data.length; i++){
+                    dataSource.datasets[0].data[i] = res.data[i].budget;
+                    dataSource.labels[i] = res.data[i].title;
                 }
                 createChart();
             });
