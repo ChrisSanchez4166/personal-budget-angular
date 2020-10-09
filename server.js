@@ -1,6 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 const budget = {
     myBudget: [
@@ -20,19 +23,10 @@ const budget = {
 };
 
 
-
-
-
-app.use('/', express.static('public'));
-
-app.get('/hello', (req, res) => {
-    res.send("Hello World");
-});
-
 app.get('/budget', (req, res) => {
     res.json(require("./mydata.json").myBudget);
 });
 
 app.listen(port, () =>{
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`API app listening at http://localhost:${port}`);
 });
